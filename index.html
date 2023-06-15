@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <link
+        href="IMG/Logo-Black.svg"
+        rel="icon"
+        media="(prefers-color-scheme: light)"
+        type="image/svg+xml"
+    />
+
+    <link
+        href="IMG/Logo-White.svg"
+        rel="icon"
+        media="(prefers-color-scheme: dark)"
+        type="image/svg+xml"
+    />
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>SMILES-Mapper</title>
+</head>
+<body>
+    <script src="https://unpkg.com/@rdkit/rdkit/dist/RDKit_minimal.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <script type="text/javascript" src="SMILES-Mapper.js"></script>
+
+    <div id = "section-molview"> 
+        <h1  id="load">RDKit Loading Please Wait</h1>
+    </div>
+
+    <div id = "section-buttombar">
+
+        <div class="tabcontain-buttom">
+            <button class="tab-buttom active" onclick="openPage(event, 'page-input', 'tab-buttom', 'page-buttombar','grid')">Input</button>
+            <button class="tab-buttom" id="smile-btn" onclick="openPage(event, 'page-smiles', 'tab-buttom', 'page-buttombar','grid')">SMILES</button>
+            <button class="tab-buttom" onclick="openPage(event, 'page-inchi', 'tab-buttom', 'page-buttombar','grid')">InChI</button>
+        </div>
+
+
+        <div id="page-input" class="page-buttombar">
+            <div class="innercontainer">
+
+                <input type="text" id="smilesinput" name="smilesinput" placeholder="Enter a SMILES (e.g ' NCCc1c[nH]cn1 ' ) and press 'Show'">
+                <button id="runButton" onclick="load_compound()">Show</button>
+
+            </div>
+        </div>
+        
+        <div id="page-smiles" class="page-buttombar">
+            <div class="innercon">
+
+                <div class="innercon-lvl2">
+                    
+                <div id = "top-smiles-container" class="innercontainer">
+                    <div id = "atomidtitle">Atom ID</div>
+                </div>
+
+
+                <div id = "buttom-smiles-container" class="innercontainer">
+                    <div id = "smileidtitle">SMILES</div>
+                </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <div id="page-inchi" class="page-buttombar">
+            <div class="innercon">
+
+                <div class="innercon-lvl2">
+
+                    <div id = "top-inchi-container" class="innercontainer">
+                        <div id = "atomidtitle">Atom ID</div>
+                    </div>
+
+
+                    <div id = "buttom-inchi-container" class="innercontainer">
+                        <div id = "smileidtitle">Inchi</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id = "section-sidebar">
+        <div class="tabcontain-side">
+            <button class="tab-side" id="keku-btn" onclick="openPage(event, 'page-kekul', 'tab-side', 'side-page','block')">Mol-Block<br>(Kekulized)</button>
+            <button class="tab-side" onclick="openPage(event, 'page-atom', 'tab-side', 'side-page','block')">Mol-Block<br>(Aromatic)</button>
+            <button class="tab-side" onclick="openPage(event, 'page-v3', 'tab-side', 'side-page','block')">V3K-Mol-Block</button>
+        </div>
+        <div class="side-page" id="page-kekul">
+            <div class ="atm_line_con" id="atm_line_con_kek"></div>
+            <div class ="mol_line_con" id="mol_line_con_kek"></div>
+        </div>
+        <div class="side-page" id="page-atom">
+            <div class ="atm_line_con" id="atm_line_con_arom"></div>
+            <div class ="mol_line_con" id="mol_line_con_arom"></div>
+        </div>
+        <div class="side-page" id="page-v3">
+            <div class ="atm_line_con" id="atm_line_con_v3"></div>
+            <div class ="mol_line_con" id="mol_line_con_v3"></div>
+        </div>
+        <div class="side-page" id="page-about">
+
+            <img src = "IMG/Logo-White-Text.svg" alt="SMILES-Mapper Logo" id="logobox"/>
+            <div class="version_num"> Version β.1.0 <a href="http://www.kyll.dk" target="_blank">© 2023 Victor Kyllesbech </a></div>
+
+            <button  class="collapsible" onclick="collapsible(event)" >What Is This ?</button>
+            <div class="colapsecontent">
+                <p>
+                    SMILES-Mapper is a web-app, made to visualize how molecular formats are constructed, such as <a target=”_blank” href="https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system">SMILES</a>
+                    and <a target=”_blank” href="https://en.wikipedia.org/wiki/International_Chemical_Identifier">InChi</a> strings, together with <a target=”_blank” href="https://en.wikipedia.org/wiki/Chemical_table_file"> chemical table files formats like .mol and .sdf </a>
+
+                    <br>
+                    <br> 
+
+                    SMILES-Mapper is created, largely as a way for me to learn <a target="_blank" href="https://www.rdkitjs.com/">RDKitJS</a>, although hopefully, it will be useful for either teaching purposes or for debugging SMILES strings. 
+                    
+                    <br>
+                    <br> 
+
+                    <b>Note this is a beta version and bugs and issues may therefore occur</b>, please contact me at <a href = "mailto: smiles-mapper@kyll.dk">smiles-mapper@kyll.dk</a> if you find any. 
+
+                </p>
+            </div>
+
+            <button  class="collapsible" onclick="collapsible(event)" >How To Use</button>
+            <div class="colapsecontent">
+                <p>
+
+                    To use, enter a <a target=”_blank” href="https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system">SMILES</a> string in the input field and press the "Show" button.
+                     A molecular structure should appear, if not, the <a target=”_blank” href="https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system">SMILES</a> may contain errors. 
+
+                    <br>
+                    <br> 
+
+                    The molecular structure is colored by structure type and provided with an index for each atom. At the bottom, <a target=”_blank” href="https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system">SMILES</a>
+                     and <a target=”_blank” href="https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system">SMILES</a> can be seen, with atoms colored the same as the structure, above each letter in the string,
+                      the index of the associated atom in the molecular structure is shown. Hovering over letters associated with an atom will also highlight it in the structure. 
+
+
+                    <br>
+                    <br>
+
+                    Note that the <a target=”_blank” href="https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system">SMILES</a> input will not be altered, and shown as is. 
+
+                    <br>
+                    <br> 
+
+                    In a similar fashion <a target=”_blank” href="https://en.wikipedia.org/wiki/Chemical_table_file"> V2000 and V3000 mol-blocks</a> can be found in the sidebar, with the same coloring and atomic index next to each line associated with an atom, and hovering over a line will highlight the associated atom.
+                    
+
+                    <br>
+                    <br> 
+
+                    If you find any issues or bugs, please let me know at <a href = "mailto: smiles-mapper@kyll.dk">smiles-mapper@kyll.dk</a>. Refreshing the page may solve it. 
+                </p>
+            </div>
+
+            <button  class="collapsible" onclick="collapsible(event)" >Who, Code & Lisence</button>
+            <div class="colapsecontent">
+
+                <h3>Who Am I ?</h3>
+                
+                <p>
+                    This SMILES-Mapper and its logo was created by Victor Kyllesbech, you can find me at <a target="_blank" href="http://www.kyll.dk">Kyll.dk</a>, where you can also see some of my other projects, 
+                    such as <a target="_blank" href="http://www.mendeleej.com">Mendeleej.com</a>, a free, online and interactive periodic table, or <a target="_blank" href="https://kyll.dk/MolInspector/">Kylles Mol-Inspector</a>,
+                    a free utility to inspect SDF files. Feel free to contact me at <a href = "mailto: v@kyll.dk">v@kyll.dk</a>
+                </p>
+
+
+                <h3>Code & Lisence</h3>
+
+                <p>
+                    SMILES-Mapper is open source, and the code can be found on GitHub <a href="https://github.com/KylleV/SMILES-Mapper/" target="_blank">github.com/KylleV/SMILES-Mapper</a>. The code is released under the MIT License. 
+                </p>
+
+
+
+
+            </div>
+
+            <button  class="collapsible" onclick="collapsible(event)" >FAQ</button>
+            <div class="colapsecontent">
+
+                <h3>Kekulized vs Aromatic Mol Block</h3>
+                <p>
+                    The only difference between kekulized and aromatic mol-blocks is how aromatic structures are handled.
+                    Aromatic bonds in aromatic mol-blocks are assigned an aromatic bond-type, while in kekulized mol-blocks,
+                    the aromatic bonds are assigned as alternating single and double bonds, as illustrated below. 
+                </p>
+
+                <img src = "IMG/AromticVsKekulized.svg" alt="SMILES-Mapper Logo" id="logobox"/>
+
+            </div>
+
+
+
+            <button  class="collapsible" onclick="collapsible(event)" >Other Similar Tools</button>
+            <div class="colapsecontent">
+
+                <p>
+                    There are quite a few projects similar to this, allowing the inspection and debugging of chemical file formats, which you may find useful. 
+                </p>
+
+                <h3><a target="_blank", href="https://smarts.plus/">SMARTS.plus</a></h3>
+
+
+                <p>
+                    <a target="_blank", href="https://smarts.plus/">SMARTS.plus</a> <sup><a href="https://doi.org/10.1002/minf.202000216" target="_blank">1</a></sup> is a web service developed by <a href="https://www.zbh.uni-hamburg.de/forschung/amd.html" target="_blank">AMD group</a>
+                    at the Universität Hamburg. <a target="_blank", href="https://smarts.plus/">SMARTS.plus</a> allows easy visualization of the, otherwise difficult-to-understand, SMARTS and SMIRKS strings used for reactions and, for (sub)structure searches. The group also has a large number of other useful applications, many free for academic use.
+                </p>
+
+                <br> 
+
+                <h3><a target="_blank", href="https://kyll.dk/MolInspector/">Kylles Mol Inspector</a></h3>
+                <p>
+                    <a target="_blank", href="https://kyll.dk/MolInspector/">Kylles Mol Inspector</a> is a small, free, utility application developed by myself for a quick inspection of MOL and SDF files, allowing easy visualization  of atomic and bond properties.
+                </p>
+
+                <br> 
+
+                <h3><a target="_blank", href="https://chemapps.stolaf.edu/jmol/jsmol/hackamol.htm">Hack-A-Mol</a></h3>
+                <p>
+                    <a target="_blank", href="https://chemapps.stolaf.edu/jmol/jsmol/hackamol.htm">Hack-A-Mol</a> is a web-appplication developed by <a href="https://www.stolaf.edu/people/hansonr/" target="_blank">Bob Hanson</a>, which allows you to draw a 
+                    molecular structure and see how it looks in different file-formats, but also allows the editing of these files and see how it changes the molecular structure. 
+                </p>
+
+
+            </div>
+
+            <button  class="collapsible" onclick="collapsible(event)" >Known Issues</button>
+            <div class="colapsecontent">
+
+                <p>
+                    There are some known mistakes, and some possible ones, which might be worth noting. 
+                </p>
+                
+
+
+                <h3>1 - Inchi & Salts</h3>
+                <pr>
+                    Inchi String does not really function well with salts and other situations where not all atoms have a numerical identifier. In some cases, this 
+                    may result in no coloring/labeling, seems to happen if no covalent interactions ( e.g [Al](Cl)(Cl)Cl ), alternatively is there are 
+                    covalent parts, it may colorize that correctly but not the non-covalent interactions ( e.g CCC[Al] )
+                </pr>
+
+                <br>
+
+                <h3>2 - Possibly Inchi & Iostopes</h3>
+
+                <pr>
+                    While it should work, and I have not seen any issues personally, I think there may be instances where certain isotopes may lead to the wrong 
+                    numbering of atoms for the Inchi String representation. (this is because isotopes are used to find each atom)
+                </pr>
+
+                <br>
+
+                <h3>3 - Possibly Inchi & Iostopes</h3>
+
+                <pr>
+                    While I have not experienced these issues, it may be possible that some elements lead to a wrong assignment 
+                    of atoms in the InChi strings, if this occurs, please contact me, so I can fix it.
+                </pr>
+
+                <br>
+                <br>
+
+
+            </div>
+        </div>
+
+        
+    </div>
+
+    <div class="tab-side active" id="tab-about" onclick="openPage(event, 'page-about', 'tab-side', 'side-page','block')">?</div>
+
+
+
+
+
+<script>
+    // Assign RDKitModule to the window object
+    initRDKitModule().then(function (instance) {
+        window.RDKitModule = instance;
+        console.log("RDKit version: " + RDKitModule.version());
+        var doc = document.getElementById("load").innerHTML = "Finished Loading You Can Enter SMILES Now <br> Example : NCCc1c[nH]cn1";
+    });
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 604.77 311.98">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: 0em;
+      }
+
+      .cls-2 {
+        stroke-dasharray: 0 0 12.2 30.51;
+      }
+
+      .cls-2, .cls-3, .cls-4 {
+        fill: none;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+        stroke-width: 8px;
+      }
+
+      .cls-2, .cls-4 {
+        stroke-linecap: round;
+      }
+
+      .cls-5 {
+        letter-spacing: 0em;
+      }
+
+      .cls-6 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-7 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-8 {
+        letter-spacing: 0em;
+      }
+
+      .cls-9 {
+        fill: #fff;
+        font-family: RalewayRoman-Medium, Raleway;
+        font-size: 39px;
+        font-variation-settings: 'wght' 500;
+        font-weight: 500;
+      }
+    </style>
+  </defs>
+  <g id="Layer_2-2" data-name="Layer 2">
+    <path class="cls-3" d="m200.35,4h-111.24c-10.53,0-20.27,5.62-25.54,14.74L7.95,115.08c-5.27,9.12-5.27,20.36,0,29.49l55.62,96.34c5.27,9.12,15,14.74,25.54,14.74h111.24c10.53,0,20.27-5.62,25.54-14.74l55.62-96.34c5.27-9.12,5.27-20.36,0-29.49l-55.62-96.34c-5.27-9.12-15-14.74-25.54-14.74Z"/>
+    <path class="cls-4" d="m92.6,39.54h104.25"/>
+    <path class="cls-4" d="m248.97,129.82c-17.37,30.09-34.75,60.19-52.12,90.28"/>
+    <path class="cls-4" d="m40.48,129.82c17.37,30.09,34.75,60.19,52.12,90.28"/>
+    <path class="cls-3" d="m515.66,4h-111.24c-10.53,0-20.27,5.62-25.54,14.74l-55.62,96.34c-5.27,9.12-5.27,20.36,0,29.49l55.62,96.34c5.27,9.12,15,14.74,25.54,14.74h111.24c10.53,0,20.27-5.62,25.54-14.74l55.62-96.34c5.27-9.12,5.27-20.36,0-29.49l-55.62-96.34c-5.27-9.12-15-14.74-25.54-14.74Z"/>
+    <path class="cls-2" d="m486.12,46.09h-52.14c-13.78,0-26.52,7.35-33.41,19.29l-26.07,45.16c-6.89,11.94-6.89,26.64,0,38.58l26.07,45.16c6.89,11.94,19.63,19.29,33.41,19.29h52.14c13.78,0,26.52-7.35,33.41-19.29l26.07-45.16c6.89-11.94,6.89-26.64,0-38.58l-26.07-45.16c-6.89-11.94-19.63-19.29-33.41-19.29Z"/>
+    <text class="cls-9" transform="translate(55.63 303.28)"><tspan class="cls-6" x="0" y="0">K</tspan><tspan x="24.14" y="0">ekuli</tspan><tspan class="cls-1" x="111.77" y="0">z</tspan><tspan x="130.61" y="0">ed</tspan></text>
+    <text class="cls-9" transform="translate(377.42 303.28)"><tspan x="0" y="0">A</tspan><tspan class="cls-7" x="26.4" y="0">r</tspan><tspan x="40.09" y="0">om</tspan><tspan class="cls-5" x="99.49" y="0">a</tspan><tspan class="cls-8" x="120.94" y="0">tic</tspan></text>
+  </g>
+</svg>
