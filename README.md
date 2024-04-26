@@ -6,6 +6,8 @@
 
 ----
 
+[![DOI](https://zenodo.org/badge/654095551.svg)](https://zenodo.org/doi/10.5281/zenodo.11072421)
+
 SMILES-Mapper is a small web application that can be found at [kyll.dk/SMILES-Mapper](https://kyll.dk/SMILES-Mapper/). SMILES-Mapper allows interactive visualization of how SMILES & InChi strings are created for a given molecule together with the V2000  ( used in .mol and .sdf files) and V3000 mol-blocks. 
 
 <p align="center">
